@@ -45,10 +45,26 @@ function displayBagSummary() {
       <span class="price-item-value">₹${finalPayment}</span>
     </div>
   </div>
-  <button class="btn-place-order">
-    <div class="css-xjhrni">PLACE ORDER</div>
+  <button class="btn-place-order" onclick="runForThreeSeconds(showOrder);">
+    PLACE ORDER
   </button>
   `;
+}
+
+function runForThreeSeconds(showFunc) {
+  showFunc();
+
+  setTimeout(() => {
+    let order = document.querySelector("#showOder");
+    if (order) {
+      order.innerHTML = "";
+    }
+  }, 3000);
+}
+
+function showOrder() {
+  let order = document.querySelector("#showOder");
+  order.innerHTML = `<p>Your order will be delivered on Sunday.</p>`;
 }
 
 function loadBagItemObjects() {
@@ -60,7 +76,6 @@ function loadBagItemObjects() {
       }
     }
   });
-  console.log(bagItemObjects);
 }
 
 function displayBagItems() {

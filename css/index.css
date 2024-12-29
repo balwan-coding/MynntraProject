@@ -155,6 +155,17 @@ header {
     }
 }
 
+#showOder {
+    position: fixed;
+    top: 0;
+    background-color: red;
+    padding: 4px;
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+    right: 0;
+}
+
 /* Main section */
 .banner_container {
     margin: 40px 0;

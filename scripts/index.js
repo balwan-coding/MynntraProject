@@ -71,9 +71,36 @@ function displayItem() {
           <span class="original-price">Rs ${item.original_price}</span>
           <span class="discount">(${item.discount_percentage}% OFF)</span>
       </div>
-      <button class="btn-add-bag" onclick="addToBag(${item.id})">Add to Bag</button>
+      <button class="btn-add-bag" onclick="addToBag(${item.id}) ,runForThreeSeconds(showOrder);">Add to Bag</button>
     </div>`;
   });
 
   actionContainerElement.innerHTML = innerHTML;
+}
+
+function runForThreeSeconds(showFunc) {
+  showFunc();
+
+  setTimeout(() => {
+    let order = document.querySelector("#showOder");
+    if (order) {
+      order.innerHTML = "";
+    }
+  }, 2000);
+}
+
+function showOrder() {
+  let order = document.querySelector("#showOder");
+  order.innerHTML = `<p>Product added to card.</p>`;
+}
+
+function loadBagItemObjects() {
+  console.log(bagItems);
+  bagItemObjects = bagItems.map((itemId) => {
+    for (let i = 0; i < items.length; i++) {
+      if (itemId == items[i].id) {
+        return items[i];
+      }
+    }
+  });
 }
