@@ -23,7 +23,6 @@ function displayBagSummary() {
 
   finalPayment = totalMRP - totalDiscount + convenient_fees;
 
-  console.log(finalPayment);
   bagSummaryElement.innerHTML = ` 
     <div class="bag-details-container">
     <div class="price-header">PRICE DETAILS (${totalItem} Items) </div>
@@ -45,15 +44,13 @@ function displayBagSummary() {
       <span class="price-item-value">₹${finalPayment}</span>
     </div>
   </div>
-  <button class="btn-place-order" onclick="runForThreeSeconds(showOrder);">
+  <button class="btn-place-order" onclick="runForThreeSeconds(showOrder('Your order will be delivered on Sunday'));;">
     PLACE ORDER
   </button>
   `;
 }
 
-function runForThreeSeconds(showFunc) {
-  showFunc();
-
+function runForThreeSeconds() {
   setTimeout(() => {
     let order = document.querySelector("#showOder");
     if (order) {
@@ -62,13 +59,12 @@ function runForThreeSeconds(showFunc) {
   }, 3000);
 }
 
-function showOrder() {
+function showOrder(mes) {
   let order = document.querySelector("#showOder");
-  order.innerHTML = `<p>Your order will be delivered on Sunday.</p>`;
+  order.innerHTML = `<p>${mes}.</p>`;
 }
 
 function loadBagItemObjects() {
-  console.log(bagItems);
   bagItemObjects = bagItems.map((itemId) => {
     for (let i = 0; i < items.length; i++) {
       if (itemId == items[i].id) {
@@ -118,6 +114,6 @@ function generateItemHTML(item) {
       </div>
     </div>
 
-    <div class="remove-from-cart" onclick="removeFromBag(${item.id})">X</div>
+    <div class="remove-from-cart" onclick="removeFromBag(${item.id}) ,runForThreeSeconds(showOrder('Product delete'))">X</div>
   </div>`;
 }

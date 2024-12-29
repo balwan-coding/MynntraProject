@@ -71,16 +71,17 @@ function displayItem() {
           <span class="original-price">Rs ${item.original_price}</span>
           <span class="discount">(${item.discount_percentage}% OFF)</span>
       </div>
-      <button class="btn-add-bag" onclick="addToBag(${item.id}) ,runForThreeSeconds(showOrder);">Add to Bag</button>
+      <div>
+      <button class="btn-add-bag" onclick="addToBag(${item.id}) ,runForThreeSeconds(showOrder('Thnaku for buy :${item.item_name} Product added to card'));">Buy Now</button>
+      <button class="btn-add-bag" onclick="addToBag(${item.id}) ,runForThreeSeconds(showOrder('Product added to card'));">Add to Bag</button>
+      </div>
     </div>`;
   });
 
   actionContainerElement.innerHTML = innerHTML;
 }
 
-function runForThreeSeconds(showFunc) {
-  showFunc();
-
+function runForThreeSeconds() {
   setTimeout(() => {
     let order = document.querySelector("#showOder");
     if (order) {
@@ -89,9 +90,9 @@ function runForThreeSeconds(showFunc) {
   }, 2000);
 }
 
-function showOrder() {
+function showOrder(mes) {
   let order = document.querySelector("#showOder");
-  order.innerHTML = `<p>Product added to card.</p>`;
+  order.innerHTML = `<p>${mes}.</p>`;
 }
 
 function loadBagItemObjects() {

@@ -157,14 +157,14 @@ header {
 
 #showOder {
     position: fixed;
-    top: 0;
+    top: 3px;
     background-color: red;
-    padding: 4px;
     color: white;
     text-transform: uppercase;
     font-weight: bold;
-    right: 0;
+    right: 20px;
 }
+
 
 /* Main section */
 .banner_container {
