@@ -114,6 +114,6 @@ function generateItemHTML(item) {
       </div>
     </div>
 
-    <div class="remove-from-cart" onclick="removeFromBag(${item.id}) ,runForThreeSeconds(showOrder('Product delete'))">X</div>
+    <div class="remove-from-cart" onclick="removeFromBag(${item.id}) ,runForThreeSeconds(showOrder('Product remove to card'))">X</div>
   </div>`;
 }
