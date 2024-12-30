@@ -158,13 +158,18 @@ header {
 #showOder {
     position: fixed;
     top: 3px;
-    background-color: red;
+    background-color: green;
     color: white;
     text-transform: uppercase;
     font-weight: bold;
     right: 20px;
+    padding: 6px;
+    border-radius: 10px;
 }
 
+.showOrder-span {
+    margin: 2;
+}
 
 /* Main section */
 .banner_container {

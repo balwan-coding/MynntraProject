@@ -61,7 +61,7 @@ function runForThreeSeconds() {
 
 function showOrder(mes) {
   let order = document.querySelector("#showOder");
-  order.innerHTML = `<p>${mes}.</p>`;
+  order.innerHTML = `<p><span>✔</span>${mes}.</p>`;
 }
 
 function loadBagItemObjects() {
