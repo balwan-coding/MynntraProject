@@ -22,7 +22,7 @@ function setupSearchListener() {
 
 function filterItems(searchTerm) {
   if (searchTerm === "") {
-    filteredItems = [...items];
+    filteredItems = items;
   } else {
     filteredItems = items.filter((item) => {
       return (
