@@ -51,13 +51,35 @@
   <body>
     <header>
       <div class="logo_container">
-        <a href="../index.html"
-          ><img
+        <a href="../index.html">
+          <img
             class="myntra_home"
             src="images/myntra_logo.webp"
             alt="Myntra Home"
-        /></a>
+          />
+        </a>
+        <div class="menu_btn" onclick="openSidebar()">☰</div>
       </div>
+
+      <div id="sidebar" class="sidebar">
+        <div class="logo_container">
+          <a href="../index.html">
+            <img
+              class="myntra_home"
+              src="images/myntra_logo.webp"
+              alt="Myntra Home"
+            />
+          </a>
+        </div>
+        <span class="close_btn" onclick="closeSidebar()">×</span>
+        <a href="#">Men</a>
+        <a href="#">Women</a>
+        <a href="#">Kids</a>
+        <a href="#">Home & Living</a>
+        <a href="#">Beauty</a>
+        <a href="#">Studio <sup>New</sup></a>
+      </div>
+
       <nav class="nav_bar">
         <a href="#">Men</a>
         <a href="#">Women</a>
@@ -66,6 +88,7 @@
         <a href="#">Beauty</a>
         <a href="#">Studio <sup>New</sup></a>
       </nav>
+
       <div class="search_bar">
         <span class="material-symbols-outlined search_icon">search</span>
         <input
@@ -73,15 +96,11 @@
           placeholder="Search for products, brands and more"
         />
       </div>
+
       <div class="action_bar">
         <div class="action_container">
           <span class="material-symbols-outlined action_icon">person</span>
           <span class="action_name">Profile</span>
-        </div>
-
-        <div class="action_container">
-          <span class="material-symbols-outlined action_icon">favorite</span>
-          <span class="action_name">Wishlist</span>
         </div>
 
         <a class="action_container" href="pages/bag.html">
@@ -93,6 +112,7 @@
         </a>
       </div>
     </header>
+
     <div id="showOder"></div>
     <main style="min-height: 100vh">
       <div class="items-container"></div>
