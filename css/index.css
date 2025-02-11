@@ -167,128 +167,7 @@ header {
     margin-right: 10px;
 }
 
-/* ✅ Mobile Responsive Design */
-@media (max-width: 768px) {
-    header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 10px;
-        height: auto;
-    }
 
-    .logo_container {
-        margin-left: 2%;
-        display: flex;
-        flex-direction: row-reverse;
-    }
-
-    /* Hide Navbar and Action Bar */
-    .nav_bar,
-    .action_bar .action_container:nth-child(1) {
-        display: none;
-    }
-
-    /* Show only Menu, Logo, Search Bar, and Bag */
-    .menu_btn {
-        display: block;
-        font-size: 24px;
-        cursor: pointer;
-        margin-left: 10px;
-    }
-
-    .search_bar {
-        flex-grow: 1;
-        margin: 0 10px;
-    }
-
-    /* Show only Bag Icon */
-    .action_bar {
-        display: flex;
-        justify-content: flex-end;
-        margin-right: 10px;
-    }
-
-    .action_container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .action_name {
-        font-size: 12px;
-    }
-
-    /* Bag Icon Styling */
-    .action_container:last-child {
-        display: flex;
-    }
-
-    .bag-item-count {
-        top: -5px;
-        right: -5px;
-        font-size: 10px;
-        min-width: 16px;
-        padding: 2px 4px;
-    }
-
-    /* Move Navbar and Actions inside Sidebar */
-    .sidebar {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .sidebar .nav_bar,
-    .sidebar .action_bar {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .sidebar .action_bar {
-        margin: 20px 0;
-    }
-
-    .sidebar a {
-        display: block;
-        padding: 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-    }
-
-    .logo_container {
-        margin-bottom: 10px;
-        margin-left: 0;
-    }
-
-    .search_bar {
-        margin-bottom: 10px;
-    }
-
-    .action_bar {
-        justify-content: flex-end;
-    }
-
-    .action_container {
-        flex-direction: column;
-        align-items: center;
-        gap: 3px;
-    }
-
-    .action_name {
-        font-size: 10px;
-    }
-
-    .bag-item-count {
-        font-size: 10px;
-        min-width: 14px;
-        padding: 2px 3px;
-    }
-}
 
 #showOder {
     position: fixed;
@@ -476,4 +355,125 @@ header {
 
 a.action_container:link {
     color: black;
+}
+
+
+@media (max-width: 768px) {
+    header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        height: auto;
+    }
+
+    .logo_container {
+        margin-left: 2%;
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+
+    .nav_bar,
+    .action_bar .action_container:nth-child(1) {
+        display: none;
+    }
+
+
+    .menu_btn {
+        display: block;
+        font-size: 24px;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .search_bar {
+        flex-grow: 1;
+        margin: 0 10px;
+    }
+
+
+    .action_bar {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 10px;
+    }
+
+    .action_container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .action_name {
+        font-size: 12px;
+    }
+
+
+    .action_container:last-child {
+        display: flex;
+    }
+
+    .bag-item-count {
+        top: -40px;
+        right: -5px;
+        font-size: 10px;
+        min-width: 16px;
+        padding: 2px 4px;
+    }
+
+    .sidebar {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar .nav_bar,
+    .sidebar .action_bar {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar .action_bar {
+        margin: 20px 0;
+    }
+
+    .sidebar a {
+        display: block;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        align-items: flex-start;
+        padding: 10px;
+    }
+
+    .logo_container {
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+
+    .search_bar {
+        margin-bottom: 10px;
+    }
+
+    .action_bar {
+        justify-content: flex-end;
+    }
+
+    .action_container {
+        flex-direction: column;
+        align-items: center;
+        gap: 1px;
+    }
+
+    .action_name {
+        font-size: 10px;
+    }
+
+    .bag-item-count {
+        font-size: 10px;
+        min-width: 14px;
+        padding: 2px 3px;
+    }
 }
