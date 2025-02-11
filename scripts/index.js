@@ -8,6 +8,7 @@ async function onLoad() {
   bagItems = bagItemsStr ? JSON.parse(bagItemsStr) : [];
 
   filteredItems = await fetchItems();
+  console.log("balwan", filteredItems);
   displayBagIcon();
   setupSearchListener();
   displayItem();
@@ -23,14 +24,13 @@ function setupSearchListener() {
 
 function filterItems(searchTerm) {
   if (searchTerm === "") {
-    displayItem(); // पूरे `filteredItems` को फिर से दिखाएँ
+    displayItem();
   } else {
     let searchedItems = filteredItems.filter((item) => {
-      return (
-        item.item_name.toLowerCase().includes(searchTerm) ||
-        item.company.toLowerCase().includes(searchTerm)
-      );
+      console.log("newBalwan", item);
+      return item.item_name.toLowerCase().includes(searchTerm);
     });
+    console.log("gautam", searchedItems);
     displayItem(searchedItems);
   }
 }
