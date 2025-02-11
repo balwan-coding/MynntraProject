@@ -3,13 +3,14 @@ let filteredItems = [];
 
 onLoad();
 
-function onLoad() {
+async function onLoad() {
   let bagItemsStr = localStorage.getItem("bagItems");
   bagItems = bagItemsStr ? JSON.parse(bagItemsStr) : [];
-  filteredItems = [...items];
-  displayItem();
+
+  filteredItems = await fetchItems();
   displayBagIcon();
   setupSearchListener();
+  displayItem();
 }
 
 function setupSearchListener() {
@@ -22,22 +23,24 @@ function setupSearchListener() {
 
 function filterItems(searchTerm) {
   if (searchTerm === "") {
-    filteredItems = items;
+    displayItem(); // पूरे `filteredItems` को फिर से दिखाएँ
   } else {
-    filteredItems = items.filter((item) => {
+    let searchedItems = filteredItems.filter((item) => {
       return (
         item.item_name.toLowerCase().includes(searchTerm) ||
         item.company.toLowerCase().includes(searchTerm)
       );
     });
+    displayItem(searchedItems);
   }
-  displayItem();
 }
 
 function addToBag(itemId) {
-  bagItems.push(itemId);
-  localStorage.setItem("bagItems", JSON.stringify(bagItems));
-  displayBagIcon();
+  if (!bagItems.includes(itemId)) {
+    bagItems.push(itemId);
+    localStorage.setItem("bagItems", JSON.stringify(bagItems));
+    displayBagIcon();
+  }
 }
 
 function displayBagIcon() {
@@ -50,7 +53,7 @@ function displayBagIcon() {
   }
 }
 
-function displayItem() {
+function displayItem(items = filteredItems) {
   let actionContainerElement = document.querySelector(".items-container");
   let innerHTML = "";
 
@@ -58,7 +61,7 @@ function displayItem() {
     return;
   }
 
-  filteredItems.forEach((item) => {
+  items.forEach((item) => {
     innerHTML += `<div class="item-container">
       <img class="item-image" src="${item.image}" alt="${item.item_name}">
       <div class="rating">
@@ -72,8 +75,8 @@ function displayItem() {
           <span class="discount">(${item.discount_percentage}% OFF)</span>
       </div>
       <div>
-      <button class="btn-add-bag" onclick="addToBag(${item.id}) ,runForThreeSeconds(showOrder('Thnaku for buy :${item.item_name} Product added to card'));">Buy Now</button>
-      <button class="btn-add-bag" onclick="addToBag(${item.id}) ,runForThreeSeconds(showOrder('Product added to card'));">Add to Bag</button>
+      <button class="btn-add-bag" onclick="addToBag(${item.id}); showOrder('Thank you for buying: ${item.item_name} Product added to cart'); runForThreeSeconds();">Buy Now</button>
+      <button class="btn-add-bag" onclick="addToBag(${item.id}); showOrder('Product added to cart'); runForThreeSeconds();">Add to Bag</button>
       </div>
     </div>`;
   });
@@ -90,20 +93,9 @@ function runForThreeSeconds() {
   }, 2000);
 }
 
-function showOrder(mes) {
+function showOrder(message) {
   let order = document.querySelector("#showOder");
-
-  order.innerHTML = `<p><span class="showOrder-span">✔</span>${mes}.</p>`;
-}
-
-function loadBagItemObjects() {
-  bagItemObjects = bagItems.map((itemId) => {
-    for (let i = 0; i < items.length; i++) {
-      if (itemId == items[i].id) {
-        return items[i];
-      }
-    }
-  });
+  order.innerHTML = `<p><span class="showOrder-span">✔</span>${message}.</p>`;
 }
 
 function openSidebar() {
@@ -119,9 +111,27 @@ function toggleMode() {
   let isDarkMode = document.body.classList.toggle("dark-mode");
 
   document
-    .querySelectorAll("header, main, footer,.footer_container, .sidebar")
+    .querySelectorAll("header, main, footer, .footer_container, .sidebar")
     .forEach((section) => {
       section.classList.toggle("dark-mode");
     });
+
+  localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
+
   btn.innerHTML = isDarkMode ? "☀️" : "🌙";
 }
+
+window.onload = function () {
+  let savedMode = localStorage.getItem("darkMode");
+
+  if (savedMode === "enabled") {
+    document.body.classList.add("dark-mode");
+    document
+      .querySelectorAll("header, main, footer, .footer_container, .sidebar")
+      .forEach((section) => {
+        section.classList.add("dark-mode");
+      });
+
+    document.querySelector(".toggle-btn").innerHTML = "☀️";
+  }
+};
