@@ -6,7 +6,7 @@ async function fetchItems() {
     return data.products.map((item) => ({
       id: item.id,
       image: item.thumbnail,
-      company: item.brand,
+      company: item.category,
       item_name: item.title,
       original_price: item.price + 200, // Example: Original price को बढ़ा रहे हैं
       current_price: item.price,
