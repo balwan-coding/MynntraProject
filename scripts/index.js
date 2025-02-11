@@ -107,7 +107,7 @@ function closeSidebar() {
 }
 
 function toggleMode() {
-  let btn = document.querySelector(".toggle-btn");
+  let btn = document.querySelector(".toggle-img");
   let isDarkMode = document.body.classList.toggle("dark-mode");
 
   document
@@ -118,7 +118,7 @@ function toggleMode() {
 
   localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
 
-  btn.innerHTML = isDarkMode ? "☀️" : "🌙";
+  btn.src = isDarkMode ? "./svg/sun.svg" : "./svg/moon.svg";
 }
 
 window.onload = function () {
@@ -132,6 +132,6 @@ window.onload = function () {
         section.classList.add("dark-mode");
       });
 
-    document.querySelector(".toggle-btn").innerHTML = "☀️";
+    document.querySelector(".toggle-img").src = "./svg/sun.svg";
   }
 };
