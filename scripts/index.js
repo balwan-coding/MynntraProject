@@ -92,6 +92,7 @@ function runForThreeSeconds() {
 
 function showOrder(mes) {
   let order = document.querySelector("#showOder");
+
   order.innerHTML = `<p><span class="showOrder-span">✔</span>${mes}.</p>`;
 }
 
@@ -111,4 +112,16 @@ function openSidebar() {
 
 function closeSidebar() {
   document.getElementById("sidebar").style.left = "-250px";
+}
+
+function toggleMode() {
+  let btn = document.querySelector(".toggle-btn");
+  let isDarkMode = document.body.classList.toggle("dark-mode");
+
+  document
+    .querySelectorAll("header, main, footer,.footer_container, .sidebar")
+    .forEach((section) => {
+      section.classList.toggle("dark-mode");
+    });
+  btn.innerHTML = isDarkMode ? "☀️" : "🌙";
 }
