@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     transition: background 0.3s, color 0.3s;
 }
@@ -41,6 +41,7 @@ header {
     align-items: center;
     border-bottom: 1px solid #b6b1b1;
     padding: 0 10px;
+    box-sizing: border-box;
 }
 
 .myntra_home {
