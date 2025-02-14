@@ -1,3 +1,5 @@
+const convenient_fees = 99;
+
 let bagItemObjects = [];
 let items = []; // API से आने वाला डेटा
 
@@ -95,26 +97,26 @@ function displayBagSummary() {
 }
 
 function generateItemHTML(item) {
-  return `<div class="bag-item-container">
-    <div class="item-left-part">
-      <img class="bag-item-img" src="${item.image}">
-    </div>
-    <div class="item-right-part">
-      <div class="company">${item.company}</div>
-      <div class="item-name">${item.item_name}</div>
-      <div class="price-container">
-        <span class="current-price">Rs ${item.current_price}</span>
-        <span class="original-price">Rs ${item.original_price}</span>
-        <span class="discount-percentage">(${item.discount_percentage}% OFF)</span>
-      </div>
-      <div class="return-period">
-        <span class="return-period-days">${item.return_period} days</span> return available
-      </div>
-      <div class="delivery-details">
-        Delivery by
-        <span class="delivery-details-days">${item.delivery_date}</span>
-      </div>
-    </div>
-    <div class="remove-from-cart" onclick="removeFromBag(${item.id})">X</div>
-  </div>`;
+  return `<div class="card mb-2 text-center d-flex flex-row" style="height: 18rem;">
+  <div style=" background-color: rgb(252, 192, 206);"><img src="${item.image}" alt="${item.item_name}" class="card-img-top" ></div>
+  <div class="card-body text-center d-flex flex-column ">
+    <h5 class="card-title">${item.company}</h5>
+    <p class="card-text">${item.item_name}</p>
+
+  <ul class="d-flex text-center">
+    <p class="">${item.current_price}</p>
+    <p class=""> ${item.original_price}</p>
+
+  </ul>
+  <div class="card-body text-center">
+        
+  <div class="delivery-details">
+    Delivery by
+    <span class="delivery-details-days">21/04/25</span>
+  </div>
+</div>
+  </div>
+<div class="remove-from-cart" onclick="removeFromBag(${item.id})">X</div>
+   </div>
+ </div>`;
 }

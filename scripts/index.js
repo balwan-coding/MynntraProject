@@ -62,23 +62,30 @@ function displayItem(items = filteredItems) {
   }
 
   items.forEach((item) => {
-    innerHTML += `<div class="item-container">
-      <img class="item-image" src="${item.image}" alt="${item.item_name}">
-      <div class="rating">
-       ${item.rating.stars} ⭐ | ${item.rating.count}
-      </div>
-      <div class="company-name">${item.company}</div>
-      <div class="item-name">${item.item_name}</div>
-      <div class="price">
-          <span class="current-price">Rs ${item.current_price}</span>
-          <span class="original-price">Rs ${item.original_price}</span>
-          <span class="discount">(${item.discount_percentage}% OFF)</span>
-      </div>
-      <div>
-      <button class="btn-add-bag" onclick="addToBag(${item.id}); showOrder('Thank you for buying: ${item.item_name} Product added to cart'); runForThreeSeconds();">Buy Now</button>
-      <button class="btn-add-bag" onclick="addToBag(${item.id}); showOrder('Product added to cart'); runForThreeSeconds();">Add to Bag</button>
-      </div>
-    </div>`;
+    innerHTML += `<div class="card mb-2 text-center" style="width: 18rem;">
+  <div style=" background-color: rgb(252, 192, 206);"><img src="${item.image}" alt="${item.item_name}" class="card-img-top" ></div>
+  <div class="card-body ">
+<div class="rating">
+  ${item.rating.stars} ⭐ | ${item.rating.count}
+</div>
+    <h5 class="card-title">${item.company}</h5>
+    <p class="card-text">${item.item_name}</p>
+  </div>
+  <ul class="d-flex">
+    <p class="">${item.current_price}</p>
+    <p class=""> ${item.original_price}</p>
+    <p class="">(${item.discount_percentage}% OFF)</p>
+  </ul>
+  <div class="card-body">
+     <button type="button" class="btn btn-primary" onclick="addToBag(${item.id}); showOrder('Thank you for buying: ${item.item_name} Product added to cart'); runForThreeSeconds();">Buy Now</button>
+<button
+   type="button" class="btn btn-primary"
+  onclick="addToBag(${item.id}); showOrder('Product added to cart'); runForThreeSeconds();"
+>
+  Add to Bag
+</button>
+   </div>
+ </div>`;
   });
 
   actionContainerElement.innerHTML = innerHTML;
@@ -98,14 +105,6 @@ function showOrder(message) {
   order.innerHTML = `<p><span class="showOrder-span">✔</span>${message}.</p>`;
 }
 
-function openSidebar() {
-  document.getElementById("sidebar").style.left = "0";
-}
-
-function closeSidebar() {
-  document.getElementById("sidebar").style.left = "-250px";
-}
-
 function toggleMode() {
   let btn = document.querySelector(".toggle-img");
   let isDarkMode = document.body.classList.toggle("dark-mode");
@@ -118,7 +117,7 @@ function toggleMode() {
 
   localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
 
-  btn.src = isDarkMode ? "./svg/sun.svg" : "./svg/moon.svg";
+  btn.src = isDarkMode ? "/svg/sun.svg" : "/svg/moon.svg";
 }
 
 window.onload = function () {
@@ -127,11 +126,11 @@ window.onload = function () {
   if (savedMode === "enabled") {
     document.body.classList.add("dark-mode");
     document
-      .querySelectorAll("header, main, footer, .footer_container, .sidebar")
+      .querySelectorAll("nav, main, footer, .footer_container, .card")
       .forEach((section) => {
         section.classList.add("dark-mode");
       });
 
-    document.querySelector(".toggle-img").src = "./svg/sun.svg";
+    document.querySelector(".toggle-img").src = "/svg/sun.svg";
   }
 };
