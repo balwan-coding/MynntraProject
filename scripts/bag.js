@@ -97,15 +97,15 @@ function displayBagSummary() {
 }
 
 function generateItemHTML(item) {
-  return `<div class="card mb-2 text-center d-flex flex-row" style="height: 18rem;">
+  return `<div id="bag-cards" class="card mb-3 text-center" style="width: 18rem">
   <div style=" background-color: rgb(252, 192, 206);"><img src="${item.image}" alt="${item.item_name}" class="card-img-top" ></div>
   <div class="card-body text-center d-flex flex-column ">
     <h5 class="card-title">${item.company}</h5>
     <p class="card-text">${item.item_name}</p>
 
-  <ul class="d-flex text-center">
+  <ul class="d-flex text-center flex-column">
     <p class="">${item.current_price}</p>
-    <p class=""> ${item.original_price}</p>
+    <p class="text-cnter"> ${item.original_price}</p>
 
   </ul>
   <div class="card-body text-center">
