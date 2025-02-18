@@ -126,7 +126,7 @@ window.onload = function () {
   if (savedMode === "enabled") {
     document.body.classList.add("dark-mode");
     document
-      .querySelectorAll("nav, main, footer,.footer_container, .card,a")
+      .querySelectorAll("nav, main, footer,.footer_container, .card, a")
       .forEach((section) => {
         section.classList.add("dark-mode");
       });

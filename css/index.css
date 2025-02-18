@@ -22,7 +22,8 @@ nav,
 main,
 footer,
 .footer_container,
-.sidebar {
+.sidebar,
+a {
     transition: background 0.3s, color 0.3s;
 }
 
@@ -32,7 +33,8 @@ footer,
     color: white !important;
 }
 
-.dark-mode footer {
+.dark-mode footer,
+.footer_container {
     background-color: #222 !important;
 }
 
