@@ -27,10 +27,8 @@ function filterItems(searchTerm) {
     displayItem();
   } else {
     let searchedItems = filteredItems.filter((item) => {
-      console.log("newBalwan", item);
       return item.item_name.toLowerCase().includes(searchTerm);
     });
-    console.log("gautam", searchedItems);
     displayItem(searchedItems);
   }
 }
@@ -77,10 +75,10 @@ function displayItem(items = filteredItems) {
     <p class="">(${item.discount_percentage}% OFF)</p>
   </ul>
   <div class="card-body">
-     <button type="button" class="btn btn-primary" onclick="addToBag(${item.id}); showOrder('Thank you for buying: ${item.item_name} Product added to cart'); runForThreeSeconds();">Buy Now</button>
+     <button type="button" class="btn btn-primary" onclick="buyNow(${item.id})">Buy Now</button>
 <button
    type="button" class="btn btn-primary"
-  onclick="addToBag(${item.id}); showOrder('Product added to cart'); runForThreeSeconds();"
+  onclick="addToBag(${item.id}); showAlert('Product added to cart'); runForThreeSeconds();"
 >
   Add to Bag
 </button>
@@ -93,16 +91,18 @@ function displayItem(items = filteredItems) {
 
 function runForThreeSeconds() {
   setTimeout(() => {
-    let order = document.querySelector("#showOder");
+    let order = document.querySelector("#showAlert");
+    order.style.display = "none";
     if (order) {
       order.innerHTML = "";
     }
   }, 2000);
 }
 
-function showOrder(message) {
-  let order = document.querySelector("#showOder");
-  order.innerHTML = `<p><span class="showOrder-span">✔</span>${message}.</p>`;
+function showAlert(message) {
+  let order = document.querySelector("#showAlert");
+  order.innerHTML = `<p><span class="showOrder-span">✔</span> ${message}.</p>`;
+  order.style.display = "block";
 }
 
 function toggleMode() {
@@ -126,7 +126,7 @@ window.onload = function () {
   if (savedMode === "enabled") {
     document.body.classList.add("dark-mode");
     document
-      .querySelectorAll("nav, main, footer, .footer_container, .card")
+      .querySelectorAll("nav, main, footer,.footer_container, .card,a")
       .forEach((section) => {
         section.classList.add("dark-mode");
       });
@@ -134,3 +134,14 @@ window.onload = function () {
     document.querySelector(".toggle-img").src = "/svg/sun.svg";
   }
 };
+
+function buyNow(itemId) {
+  let selectedItem = filteredItems.find((item) => item.id === itemId);
+
+  if (selectedItem) {
+    localStorage.setItem("selectedProduct", JSON.stringify(selectedItem));
+    window.location.href = "/pages/buy.html"; // Redirect to buy.html
+  }
+}
+
+function showAutoCom() {}

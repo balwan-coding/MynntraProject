@@ -90,7 +90,7 @@ function displayBagSummary() {
         <span class="price-item-value">₹${finalPayment}</span>
       </div>
     </div>
-    <button class="btn-place-order" onclick="runForThreeSeconds(showOrder('Your order will be delivered on Sunday'));">
+    <button class="btn-place-order" onclick="runForThreeSeconds(showAlert('Your order will be delivered on Sunday'));">
       PLACE ORDER
     </button>
   `;

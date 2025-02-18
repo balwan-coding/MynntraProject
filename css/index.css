@@ -32,6 +32,10 @@ footer,
     color: white !important;
 }
 
+.dark-mode footer {
+    background-color: #222 !important;
+}
+
 .dark-mode .navbar {
     background-color: #222 !important;
 }
@@ -40,6 +44,16 @@ footer,
     background-color: #333 !important;
     color: white !important;
 }
+
+.dark-mode a {
+    background-color: #222 !important;
+    color: white !important;
+}
+
+a {
+    background-color: rgba(248, 249, 250)
+}
+
 
 li a {
     font-size: 14px;
@@ -97,21 +111,23 @@ a sup {
     cursor: pointer;
 }
 
-#showOder {
+#showAlert {
     position: fixed;
     top: 2px;
     right: 20px;
-    background-color: green;
+    background-color: rgb(104, 184, 227);
     color: white;
     text-transform: uppercase;
     font-weight: bold;
     border-radius: 10px;
     z-index: 9999;
+    display: none;
+    /* Initially hidden */
+    padding: 10px;
 }
 
-
 .showOrder-span {
-    margin: 2;
+    margin-right: 5px;
 }
 
 .banner_container {

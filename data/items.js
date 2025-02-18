@@ -6,6 +6,7 @@ async function fetchItems() {
     id: item.id,
     image: item.thumbnail,
     company: item.category,
+    description: item.description,
     item_name: item.title,
     original_price: item.price + 200, // Example: Original price को बढ़ा रहे हैं
     current_price: item.price,
