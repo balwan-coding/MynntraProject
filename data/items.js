@@ -8,12 +8,12 @@ async function fetchItems() {
     company: item.category,
     description: item.description,
     item_name: item.title,
-    original_price: item.price + 200, // Example: Original price को बढ़ा रहे हैं
+    original_price: item.price + 200,
     current_price: item.price,
-    discount_percentage: 20, // Dummy discount percentage
+    discount_percentage: 20,
     rating: {
       stars: item.rating,
-      count: item.stock, // स्टॉक को count की तरह यूज़ कर रहे हैं
+      count: item.stock,
     },
   }));
 }

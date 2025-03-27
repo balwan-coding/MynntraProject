@@ -6,9 +6,7 @@ onLoad();
 async function onLoad() {
   let bagItemsStr = localStorage.getItem("bagItems");
   bagItems = bagItemsStr ? JSON.parse(bagItemsStr) : [];
-
   filteredItems = await fetchItems();
-  console.log("balwan", filteredItems);
   displayBagIcon();
   setupSearchListener();
   displayItem();
@@ -16,7 +14,7 @@ async function onLoad() {
 
 function setupSearchListener() {
   let searchInput = document.querySelector(".search_input");
-  searchInput.addEventListener("input", function () {
+  searchInput.addEventListener("input", () => {
     let searchTerm = searchInput.value.toLowerCase().trim();
     filterItems(searchTerm);
   });
@@ -24,12 +22,20 @@ function setupSearchListener() {
 
 function filterItems(searchTerm) {
   if (searchTerm === "") {
-    displayItem();
+    displayItem(items);
+    document.querySelector("#msg").innerHTML = "";
   } else {
     let searchedItems = filteredItems.filter((item) => {
       return item.item_name.toLowerCase().includes(searchTerm);
     });
-    displayItem(searchedItems);
+
+    if (searchedItems.length === 0) {
+      document.querySelector("#msg").innerHTML = "No products found";
+      displayItem([]);
+    } else {
+      document.querySelector("#msg").innerHTML = "";
+      displayItem(searchedItems);
+    }
   }
 }
 
@@ -75,7 +81,6 @@ function displayItem(items = filteredItems) {
     <p class="">(${item.discount_percentage}% OFF)</p>
   </ul>
   <div class="card-body">
-     <button type="button" class="btn btn-primary" onclick="buyNow(${item.id})">Buy Now</button>
 <button
    type="button" class="btn btn-primary"
   onclick="addToBag(${item.id}); showAlert('Product added to cart'); runForThreeSeconds();"
@@ -117,7 +122,9 @@ function toggleMode() {
 
   localStorage.setItem("darkMode", isDarkMode ? "enabled" : "disabled");
 
-  btn.src = isDarkMode ? "/svg/sun.svg" : "/svg/moon.svg";
+  btn.src = isDarkMode
+    ? "/MyntraClone/svg/sun.svg"
+    : "/MyntraClone/svg/moon.svg";
 }
 
 window.onload = function () {
@@ -131,17 +138,6 @@ window.onload = function () {
         section.classList.add("dark-mode");
       });
 
-    document.querySelector(".toggle-img").src = "/svg/sun.svg";
+    document.querySelector(".toggle-img").src = "/MyntraClone/svg/sun.svg";
   }
 };
-
-function buyNow(itemId) {
-  let selectedItem = filteredItems.find((item) => item.id === itemId);
-
-  if (selectedItem) {
-    localStorage.setItem("selectedProduct", JSON.stringify(selectedItem));
-    window.location.href = "/pages/buy.html"; // Redirect to buy.html
-  }
-}
-
-function showAutoCom() {}
